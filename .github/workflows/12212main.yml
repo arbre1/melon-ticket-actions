@@ -1,0 +1,17 @@
+name: Check Tickets
+on:
+  schedule:
+    - cron: '*/1 * * * *' # 每5分钟运行一次
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Check Tickets
+        uses: mooyoul/melon-ticket-actions@v1.1.0
+        with:
+          product-id:210858 <你的演唱会场次ID>
+          schedule-id:250316 <你的日程ID>
+          seat-id:1_0 <你的座位ID>
+          slack-incoming-webhook-url:https://tkglobal.melon.com/performance/index.htm?langCd=EN&prodId=210858 ${{ secrets.SLACK_WEBHOOK_URL }}
+          message:764681320@qq.com '<@你的用户ID> 你的自定义消息'
